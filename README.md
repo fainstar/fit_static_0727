@@ -11,12 +11,12 @@
 ```mermaid
 graph TD
     subgraph "用戶端 (Browser)"
-        A[使用者] -->|上傳圖片| B["UI (index.html)"]
-        B -->|觸發事件| C[應用程式邏輯 (script.js)]
-        C -->|調用| E[推論處理器 (onnx-handler.js)]
+        A[使用者] -->|上傳圖片| B[UI]
+        B -->|觸發事件| C[應用程式邏輯]
+        C -->|調用| E[推論處理器]
         E -->|1. 預處理| E
         E -->|2. 執行推論| D[ONNX Runtime Web]
-        D -->|使用| F[模型檔案 (model.onnx)]
+        D -->|使用| F[模型檔案]
         D -->|返回結果| E
         E -->|3. 後處理 (NMS)| E
         E -->|最終結果| C
