@@ -11,22 +11,22 @@
 ```mermaid
 graph TD
     subgraph "用戶端 (Browser)"
-        A[使用者] -- "上傳圖片" --> B{UI (index.html)}
-        B -- "觸發事件" --> C[應用程式邏輯 (script.js)]
-        C -- "調用" --> E[推論處理器 (onnx-handler.js)]
-        E -- "1. 預處理" --> E
-        E -- "2. 執行推論" --> D[ONNX Runtime Web]
-        D -- "使用" --> F[模型檔案 (model.onnx)]
-        D -- "返回結果" --> E
-        E -- "3. 後處理 (NMS)" --> E
-        E -- "最終結果" --> C
-        C -- "更新" --> B
-        B -- "顯示偵測結果" --> A
+        A[使用者] -->|上傳圖片| B{UI (index.html)}
+        B -->|觸發事件| C[應用程式邏輯 (script.js)]
+        C -->|調用| E[推論處理器 (onnx-handler.js)]
+        E -->|1. 預處理| E
+        E -->|2. 執行推論| D[ONNX Runtime Web]
+        D -->|使用| F[模型檔案 (model.onnx)]
+        D -->|返回結果| E
+        E -->|3. 後處理 (NMS)| E
+        E -->|最終結果| C
+        C -->|更新| B
+        B -->|顯示偵測結果| A
     end
 
     subgraph "伺服器端 (Deployment)"
-        G[Nginx Web Server] -- "提供靜態資源" --> B
-        H[Docker 容器] -- "運行" --> G
+        G[Nginx Web Server] -->|提供靜態資源| B
+        H[Docker 容器] -->|運行| G
     end
 ```
 
