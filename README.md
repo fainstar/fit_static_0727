@@ -11,7 +11,7 @@
 ```mermaid
 graph TD
     subgraph "用戶端 (Browser)"
-        A[使用者] -->|上傳圖片| B[UI (index.html)]
+        A[使用者] -->|上傳圖片| B["UI (index.html)"]
         B -->|觸發事件| C[應用程式邏輯 (script.js)]
         C -->|調用| E[推論處理器 (onnx-handler.js)]
         E -->|1. 預處理| E
