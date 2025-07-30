@@ -27,6 +27,7 @@ let session;
 let currentModel = 'lin_0725'; // Default model
 let preProcessInfo = {}; // To store scaling info
 let currentExecutionProvider = 'wasm'; // Default execution provider
+let isModelLoaded = false; // Flag to track model loading status
 
 // --- Main Application Logic ---
 
@@ -47,6 +48,7 @@ async function loadModel() {
         console.log('Execution Provider:', executionProvider);
         inferenceDeviceEl.textContent = executionProvider;
         console.log(`Model ${currentModel} loaded successfully.`);
+        isModelLoaded = true; // Set the flag to true
         updateCurrentModelName();
         const lang = localStorage.getItem('language') || 'en';
         const promptText = translations[lang]['modelLoadedPrompt'].replace('{{modelName}}', currentModel);
@@ -75,8 +77,17 @@ function updateStats(boxes, inferenceTime) {
 }
 
 async function detectObjects(img, scale) {
-    if (!session) {
-        console.error('Session not initialized.');
+    if (!session || !isModelLoaded) {
+        console.error('Session not initialized or model not loaded.');
+        // Optionally, show a user-friendly message
+        updateProgressBar(0, 'modelNotReady'); // A new i18n key
+        setTimeout(() => {
+            progressBarContainer.style.display = 'none';
+            blurOverlay.style.display = 'none';
+            blurGrid.style.display = 'none';
+            blurGrid.innerHTML = '';
+            loader.style.display = 'none';
+        }, 2000);
         return;
     }
 
@@ -244,6 +255,21 @@ async function handleImage(imageSource) {
         blurOverlay.style.display = 'block';
         blurGrid.style.display = 'grid';
         populateBlurGrid();
+
+        // Wait for the model to be loaded before detecting objects
+        if (!isModelLoaded) {
+            console.log('Waiting for model to load...');
+            // You can show a waiting message to the user here
+            updateProgressBar(0, 'waitingForModel');
+            await new Promise(resolve => {
+                const interval = setInterval(() => {
+                    if (isModelLoaded) {
+                        clearInterval(interval);
+                        resolve();
+                    }
+                }, 100); // Check every 100ms
+            });
+        }
 
         await detectObjects(img, scale); // Start detection
     };

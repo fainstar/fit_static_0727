@@ -19,7 +19,9 @@ export const translations = {
         'detectedObjects': 'Detected Objects',
         'inferenceTime': 'Inference Time',
         'avgConfidence': 'Avg. Confidence',
-        'inferenceDevice': 'Inference Device'
+        'inferenceDevice': 'Inference Device',
+        'modelNotReady': 'Model is not ready, please try again later.',
+        'waitingForModel': 'Waiting for model to load...'
     },
     'zh-TW': {
         'title': '物件偵測',
@@ -41,7 +43,9 @@ export const translations = {
         'detectedObjects': '偵測到的物件',
         'inferenceTime': '推論時間',
         'avgConfidence': '平均信心度',
-        'inferenceDevice': '推論裝置'
+        'inferenceDevice': '推論裝置',
+        'modelNotReady': '模型尚未準備就緒，請稍後再試。',
+        'waitingForModel': '正在等待模型載入...'
     },
     'zh-CN': {
         'title': '物体检测',
@@ -63,7 +67,9 @@ export const translations = {
         'detectedObjects': '检测到的物体',
         'inferenceTime': '推理时间',
         'avgConfidence': '平均置信度',
-        'inferenceDevice': '推理设备'
+        'inferenceDevice': '推理设备',
+        'modelNotReady': '模型尚未准备就绪，请稍后再试。',
+        'waitingForModel': '正在等待模型加载...'
     },
     'ja': {
         'title': 'オブジェクト検出',
@@ -85,7 +91,9 @@ export const translations = {
         'detectedObjects': '検出されたオブジェクト',
         'inferenceTime': '推論時間',
         'avgConfidence': '平均信頼度',
-        'inferenceDevice': '推論デバイス'
+        'inferenceDevice': '推論デバイス',
+        'modelNotReady': 'モデルの準備ができていません。後でもう一度お試しください。',
+        'waitingForModel': 'モデルの読み込みを待っています...'
     },
     'ko': {
         'title': '객체 감지',
@@ -107,6 +115,8 @@ export const translations = {
         'detectedObjects': '감지된 객체',
         'inferenceTime': '추론 시간',
         'avgConfidence': '평균 신뢰도',
-        'inferenceDevice': '추론 장치'
+        'inferenceDevice': '추론 장치',
+        'modelNotReady': '모델이 준비되지 않았습니다. 나중에 다시 시도하십시오.',
+        'waitingForModel': '모델 로드를 기다리는 중...'
     }
 };

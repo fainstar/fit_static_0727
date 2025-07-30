@@ -115,6 +115,50 @@ ONNX Runtime Web 是此架構的基石，它讓我們能在瀏覽器中高效執
     -   **問題**: 原始模型可能過於龐大或複雜，不適合在資源受限的瀏覽器環境中運行。
     -   **解決方案**: 在部署前對模型進行**量化 (Quantization)** 或**剪枝 (Pruning)**。例如，將 FP32 模型量化為 INT8，可以在犧牲極少精度的情況下，大幅縮小模型體積並提升推論速度。
 
+## 安裝指南
+
+請依照以下步驟在您的本機環境中設定此專案。
+
+1.  **複製儲存庫**
+
+    在您的終端機中執行以下指令，將此專案複製到您的本機電腦：
+    ```bash
+    git clone https://github.com/fainstar/fit_static_0727
+    cd fit_static_0727
+    ```
+
+2.  **下載模型檔案**
+
+    從以下連結下載預訓練的 ONNX 模型檔案：
+    *   [下載模型 (model.onnx)](https://drive.google.com/file/d/1CWftYgUfFMV_lgcfC5NJVZ6QwYpAsJOe/view?usp=sharing)
+
+3.  **設定模型**
+
+    *   在專案的根目錄下建立一個名為 `model` 的資料夾。
+    *   將下載的 檔案解壓縮後，移動到您剛建立的 `model` 資料夾中。
+
+## 本地端開發
+
+若您不想使用 Docker，也可以直接在本地端啟動一個簡單的 HTTP 伺服器來運行此專案。
+
+1.  **啟動伺服器**
+
+    在專案的根目錄下，執行以下指令：
+    ```bash
+    python3 -m http.server
+    ```
+    如果您使用的是 Python 2，請改用以下指令：
+    ```bash
+    python -m SimpleHTTPServer
+    ```
+
+2.  **開啟網頁**
+
+    伺服器啟動後，在您的瀏覽器中開啟以下網址：
+    [http://localhost:8000](http://localhost:8000)
+
+    您現在應該可以看到物件偵測網站的介面，並可以開始上傳圖片進行測試。
+
 ## 部署與啟動
 
 本專案使用 Docker 和 Nginx 進行標準化部署。

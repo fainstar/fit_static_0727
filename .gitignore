@@ -3,5 +3,4 @@
 /.vercel
 /Dockerfile
 /base_util
-/model
 /nginx.conf
